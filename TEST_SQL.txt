@@ -1,0 +1,38 @@
+№ 1
+
+SELECT SD.NumDoc, SD.DateWrt, SD.Creator
+FROM   StkDocs SD
+
+
+№ 2.1
+
+SELECT C.Nm_Ct
+FROM   Contras С, Telct  T
+WHERE C.CodCt = T.CodCt
+AND T.Respondent is not NULL
+
+№ 2.2
+
+SELECT C.Nm_Ct
+FROM   Contras С, Telct  T
+WHERE C.CodCt = T.CodCt
+AND T.TelNum is not NULL
+
+№ 2.3
+
+SELECT C.Nm_Ct, COUNT(T.TelNum)
+FROM   Contras С, Telct  T
+WHERE C.CodCt = T.CodCt
+GROUP BY T.TelNum
+
+№ 2.4
+
+SELECT C.Nm_Ct
+FROM   Contras С, Telct  T
+WHERE C.CodCt != T.CodCt
+
+№ 3
+
+SELECT S.*
+FROM   StkDocsGdsAndSrv S
+WHERE S.SummaGdSrv > 1500
