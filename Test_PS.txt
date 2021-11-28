@@ -1,0 +1,15 @@
+5.2
+
+Stop-Process –Name ReportService.exe
+Get-ScheduledTask \Report\Service ReportService | Enable-ScheduledTask
+
+
+5.3
+
+#1
+$f = Get-Content -Path ‘D:\Update\Report' –Filter ‘*.rptdesign’
+$nf = $f -replace ' test/report_result?uuid=', ‘prod/report_result?uuid=’
+#2
+$nf | Set-Content -Path ‘D:\Update\Report' –Filter ‘*.rptdesign’
+$s = New-PSSession -Computername OscarProd01-UserName deployreport
+Copy-Item -Path ‘D:\Update\Report' –Filter ‘*.rptdesign’ /opt/IBM/profiles/report

@@ -1,0 +1,7 @@
+@echo off
+setlocal
+@set a=Need additional acceptance, continue with the installation?
+for /f %%d in ('"powershell (Get-Date).DayOfWeek.Value__"') do set dow=%%d
+if %dow%==6 echo %a%
+::echo day of the week : %dow%
+endlocal
